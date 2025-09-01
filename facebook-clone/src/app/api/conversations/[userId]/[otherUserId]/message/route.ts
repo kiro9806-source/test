@@ -4,19 +4,20 @@ import { mockConversations, mockUsers } from '@/lib/mockData';
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { userId: string; otherUserId: string } }
+  { params }: { params: Promise<{ userId: string; otherUserId: string }> }
 ) {
   try {
     const { content } = await request.json();
+    const { userId, otherUserId } = await params;
     let conversation = mockConversations.find(conv =>
-      conv.participants.includes(params.userId) &&
-      conv.participants.includes(params.otherUserId)
+      conv.participants.includes(userId) &&
+      conv.participants.includes(otherUserId)
     );
     
     if (!conversation) {
       conversation = {
         id: uuidv4(),
-        participants: [params.userId, params.otherUserId],
+        participants: [userId, otherUserId],
         lastMessage: content,
         lastMessageTime: new Date().toISOString(),
         messages: []
@@ -26,7 +27,7 @@ export async function POST(
     
     const newMessage = {
       id: uuidv4(),
-      senderId: params.userId,
+      senderId: userId,
       content,
       timestamp: new Date().toISOString()
     };
@@ -37,7 +38,7 @@ export async function POST(
     
     const messageWithUser = {
       ...newMessage,
-      user: mockUsers.find(u => u.id === params.userId)
+      user: mockUsers.find(u => u.id === userId)
     };
     
     return NextResponse.json(messageWithUser);

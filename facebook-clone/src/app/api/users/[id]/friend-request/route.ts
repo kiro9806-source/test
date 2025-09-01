@@ -3,17 +3,18 @@ import { mockUsers } from '@/lib/mockData';
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { fromUserId } = await request.json();
-    const targetUser = mockUsers.find(u => u.id === params.id);
+    const { id } = await params;
+    const targetUser = mockUsers.find(u => u.id === id);
     const fromUser = mockUsers.find(u => u.id === fromUserId);
     
     if (targetUser && fromUser) {
       if (!targetUser.friendRequests.includes(fromUserId)) {
         targetUser.friendRequests.push(fromUserId);
-        fromUser.sentRequests.push(params.id);
+        fromUser.sentRequests.push(id);
       }
       return NextResponse.json({ success: true });
     } else {

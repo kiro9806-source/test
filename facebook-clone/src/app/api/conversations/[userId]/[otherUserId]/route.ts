@@ -3,11 +3,12 @@ import { mockConversations, mockUsers } from '@/lib/mockData';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { userId: string; otherUserId: string } }
+  { params }: { params: Promise<{ userId: string; otherUserId: string }> }
 ) {
+  const { userId, otherUserId } = await params;
   const conversation = mockConversations.find(conv =>
-    conv.participants.includes(params.userId) &&
-    conv.participants.includes(params.otherUserId)
+    conv.participants.includes(userId) &&
+    conv.participants.includes(otherUserId)
   );
   
   if (conversation) {

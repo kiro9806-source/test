@@ -4,11 +4,12 @@ import { mockPosts, mockUsers } from '@/lib/mockData';
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { userId, content } = await request.json();
-    const post = mockPosts.find(p => p.id === params.id);
+    const { id } = await params;
+    const post = mockPosts.find(p => p.id === id);
     
     if (post) {
       const newComment = {

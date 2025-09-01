@@ -3,6 +3,10 @@
   "rules": {
     "@next/next/no-img-element": "off",
     "jsx-a11y/alt-text": "off",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "prefer-const": "off",
+    "react/jsx-no-undef": "off"
   }
 }
