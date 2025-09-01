@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
     };
     
     return NextResponse.json(postWithUser);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to create post' }, { status: 500 });
   }
 }

@@ -22,6 +22,18 @@ interface User {
   sentRequests: string[];
 }
 
+interface Comment {
+  id: string;
+  userId: string;
+  content: string;
+  timestamp: string;
+  user: {
+    id: string;
+    name: string;
+    avatar: string;
+  };
+}
+
 interface Post {
   id: string;
   userId: string;
@@ -29,7 +41,7 @@ interface Post {
   image?: string;
   timestamp: string;
   likes: string[];
-  comments: any[];
+  comments: Comment[];
   user: {
     id: string;
     name: string;

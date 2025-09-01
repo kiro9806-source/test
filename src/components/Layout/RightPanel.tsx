@@ -38,7 +38,7 @@ export default function RightPanel() {
     try {
       const response = await fetch('/api/users');
       const allUsers = await response.json();
-      const requests = allUsers.filter((u: any) => 
+      const requests = allUsers.filter((u: User) => 
         user?.friendRequests.includes(u.id)
       );
       setFriendRequests(requests);

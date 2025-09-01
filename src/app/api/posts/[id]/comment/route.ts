@@ -29,7 +29,7 @@ export async function POST(
     } else {
       return NextResponse.json({ error: 'Post not found' }, { status: 404 });
     }
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to add comment' }, { status: 500 });
   }
 }

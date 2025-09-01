@@ -5,7 +5,7 @@ export async function POST() {
   try {
     resetMockData();
     return NextResponse.json({ success: true, message: 'Data reset successfully' });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to reset data' }, { status: 500 });
   }
 }

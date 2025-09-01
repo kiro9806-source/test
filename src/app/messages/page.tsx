@@ -127,7 +127,9 @@ export default function MessagesPage() {
           {/* Empty state for conversation view */}
           <div className="lg:col-span-2 bg-white rounded-lg shadow-sm border border-gray-200 flex items-center justify-center">
             <div className="text-center text-gray-600">
-              <MessageCircle className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+                              <div className="w-16 h-16 mx-auto mb-4 text-gray-400 flex items-center justify-center">
+                  💬
+                </div>
               <h2 className="text-xl font-semibold mb-2">Select a conversation</h2>
               <p>Choose a conversation from the list to start messaging.</p>
             </div>
