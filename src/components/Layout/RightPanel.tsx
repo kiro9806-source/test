@@ -24,7 +24,7 @@ export default function RightPanel() {
 
   const fetchOnlineFriends = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/users/${user?.id}/friends`);
+      const response = await fetch(`/api/users/${user?.id}/friends`);
       const friends = await response.json();
       // Simulate some friends being online
       const online = friends.slice(0, 3);
@@ -36,7 +36,7 @@ export default function RightPanel() {
 
   const fetchFriendRequests = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/users');
+      const response = await fetch('/api/users');
       const allUsers = await response.json();
       const requests = allUsers.filter((u: any) => 
         user?.friendRequests.includes(u.id)
@@ -49,7 +49,7 @@ export default function RightPanel() {
 
   const handleAcceptFriend = async (fromUserId: string) => {
     try {
-      await fetch(`http://localhost:3001/api/users/${user?.id}/accept-friend`, {
+      await fetch(`/api/users/${user?.id}/accept-friend`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -42,7 +42,7 @@ export default function HomePage() {
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/posts');
+      const response = await fetch('/api/posts');
       const data = await response.json();
       setPosts(data);
     } catch (error) {
@@ -56,7 +56,7 @@ export default function HomePage() {
     if (!user) return;
 
     try {
-      const response = await fetch(`http://localhost:3001/api/posts/${postId}/like`, {
+      const response = await fetch(`/api/posts/${postId}/like`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ export default function HomePage() {
     if (!user) return;
 
     try {
-      const response = await fetch(`http://localhost:3001/api/posts/${postId}/comment`, {
+      const response = await fetch(`/api/posts/${postId}/comment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -79,7 +79,7 @@ export default function ConversationPage() {
 
   const fetchConversations = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/conversations/${user?.id}`);
+      const response = await fetch(`/api/conversations/${user?.id}`);
       const data = await response.json();
       setConversations(data);
     } catch (error) {
@@ -89,7 +89,7 @@ export default function ConversationPage() {
 
   const fetchConversation = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/conversations/${user?.id}/${otherUserId}`);
+      const response = await fetch(`/api/conversations/${user?.id}/${otherUserId}`);
       if (response.ok) {
         const data = await response.json();
         setCurrentConversation(data);
@@ -110,7 +110,7 @@ export default function ConversationPage() {
 
   const fetchOtherUser = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/users/${otherUserId}`);
+      const response = await fetch(`/api/users/${otherUserId}`);
       const data = await response.json();
       setOtherUser(data);
     } catch (error) {
@@ -123,7 +123,7 @@ export default function ConversationPage() {
     if (!newMessage.trim() || !user) return;
 
     try {
-      const response = await fetch(`http://localhost:3001/api/conversations/${user.id}/${otherUserId}/message`, {
+      const response = await fetch(`/api/conversations/${user.id}/${otherUserId}/message`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
