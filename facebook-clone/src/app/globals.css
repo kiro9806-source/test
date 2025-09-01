@@ -1,26 +1,68 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Facebook-like button styles */
+.fb-button {
+  @apply px-4 py-2 rounded-lg font-medium transition-colors;
+}
+
+.fb-button-primary {
+  @apply bg-blue-600 text-white hover:bg-blue-700;
+}
+
+.fb-button-secondary {
+  @apply bg-gray-200 text-gray-700 hover:bg-gray-300;
+}
+
+/* Post interaction buttons */
+.post-action-btn {
+  @apply flex items-center justify-center space-x-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600 hover:text-gray-800;
+}
+
+.post-action-btn.active {
+  @apply text-blue-600;
+}
+
+/* Message bubbles */
+.message-bubble {
+  @apply max-w-xs lg:max-w-md px-4 py-2 rounded-2xl;
+}
+
+.message-bubble.sent {
+  @apply bg-blue-600 text-white;
+}
+
+.message-bubble.received {
+  @apply bg-gray-200 text-gray-900;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Loading spinner */
+.spinner {
+  @apply inline-block w-4 h-4 border-2 border-gray-300 border-t-blue-600 rounded-full animate-spin;
 }
