@@ -3,9 +3,10 @@ import { mockUsers } from '@/lib/mockData';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const user = mockUsers.find(u => u.id === params.id);
+  const { id } = await params;
+  const user = mockUsers.find(u => u.id === id);
   
   if (user) {
     const friends = user.friends.map(friendId => 
