@@ -64,17 +64,17 @@ export default function ProfilePage() {
   const fetchProfileData = async () => {
     try {
       // Fetch user profile
-      const userResponse = await fetch(`http://localhost:3001/api/users/${userId}`);
+      const userResponse = await fetch(`/api/users/${userId}`);
       const userData = await userResponse.json();
       setProfileUser(userData);
 
       // Fetch user's posts
-      const postsResponse = await fetch(`http://localhost:3001/api/posts/user/${userId}`);
+      const postsResponse = await fetch(`/api/posts/user/${userId}`);
       const postsData = await postsResponse.json();
       setPosts(postsData);
 
       // Fetch user's friends
-      const friendsResponse = await fetch(`http://localhost:3001/api/users/${userId}/friends`);
+      const friendsResponse = await fetch(`/api/users/${userId}/friends`);
       const friendsData = await friendsResponse.json();
       setFriends(friendsData);
     } catch (error) {
@@ -88,7 +88,7 @@ export default function ProfilePage() {
     if (!currentUser) return;
 
     try {
-      const response = await fetch(`http://localhost:3001/api/posts/${postId}/like`, {
+      const response = await fetch(`/api/posts/${postId}/like`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -112,7 +112,7 @@ export default function ProfilePage() {
     if (!currentUser) return;
 
     try {
-      const response = await fetch(`http://localhost:3001/api/posts/${postId}/comment`, {
+      const response = await fetch(`/api/posts/${postId}/comment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -136,7 +136,7 @@ export default function ProfilePage() {
     if (!currentUser || !profileUser) return;
 
     try {
-      await fetch(`http://localhost:3001/api/users/${profileUser.id}/friend-request`, {
+      await fetch(`/api/users/${profileUser.id}/friend-request`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -19,7 +19,7 @@ export default function CreatePost({ onPostCreated }: CreatePostProps) {
 
     setIsLoading(true);
     try {
-      const response = await fetch('http://localhost:3001/api/posts', {
+      const response = await fetch('/api/posts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

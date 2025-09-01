@@ -40,7 +40,7 @@ export default function MessagesPage() {
 
   const fetchConversations = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/conversations/${user?.id}`);
+      const response = await fetch(`/api/conversations/${user?.id}`);
       const data = await response.json();
       setConversations(data);
     } catch (error) {

@@ -38,12 +38,12 @@ export default function FriendsPage() {
   const fetchFriendsData = async () => {
     try {
       // Fetch friends
-      const friendsResponse = await fetch(`http://localhost:3001/api/users/${user?.id}/friends`);
+      const friendsResponse = await fetch(`/api/users/${user?.id}/friends`);
       const friendsData = await friendsResponse.json();
       setFriends(friendsData);
 
       // Fetch all users to get friend requests and suggestions
-      const usersResponse = await fetch('http://localhost:3001/api/users');
+      const usersResponse = await fetch('/api/users');
       const allUsers = await usersResponse.json();
 
       // Filter friend requests
@@ -69,7 +69,7 @@ export default function FriendsPage() {
 
   const handleAcceptFriend = async (fromUserId: string) => {
     try {
-      await fetch(`http://localhost:3001/api/users/${user?.id}/accept-friend`, {
+      await fetch(`/api/users/${user?.id}/accept-friend`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ export default function FriendsPage() {
 
   const handleSendFriendRequest = async (toUserId: string) => {
     try {
-      await fetch(`http://localhost:3001/api/users/${toUserId}/friend-request`, {
+      await fetch(`/api/users/${toUserId}/friend-request`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

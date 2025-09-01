@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev": "next dev --turbopack",
+    "dev:with-server": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "dev:client": "next dev --turbopack",
     "dev:server": "cd server && npm run dev",
-    "build": "next build --turbopack",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
