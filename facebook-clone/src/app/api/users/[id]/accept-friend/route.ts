@@ -25,7 +25,7 @@ export async function POST(
     } else {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to accept friend request' }, { status: 500 });
   }
 }

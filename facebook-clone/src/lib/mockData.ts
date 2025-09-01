@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+// Mock data for Facebook clone
 
 export interface User {
   id: string;
@@ -355,10 +355,10 @@ export const notifications: Notification[] = [
 ];
 
 // In-memory storage for the session
-export let mockUsers = [...users];
-export let mockPosts = [...posts];
-export let mockConversations = [...conversations];
-export let mockNotifications = [...notifications];
+export const mockUsers = [...users];
+export const mockPosts = [...posts];
+export const mockConversations = [...conversations];
+export const mockNotifications = [...notifications];
 
 // Reset function
 export function resetMockData() {

@@ -7,6 +7,18 @@ import MainLayout from '@/components/Layout/MainLayout';
 import CreatePost from '@/components/Post/CreatePost';
 import PostCard from '@/components/Post/PostCard';
 
+interface Comment {
+  id: string;
+  userId: string;
+  content: string;
+  timestamp: string;
+  user: {
+    id: string;
+    name: string;
+    avatar: string;
+  };
+}
+
 interface Post {
   id: string;
   userId: string;
@@ -14,7 +26,7 @@ interface Post {
   image?: string;
   timestamp: string;
   likes: string[];
-  comments: any[];
+  comments: Comment[];
   user: {
     id: string;
     name: string;
